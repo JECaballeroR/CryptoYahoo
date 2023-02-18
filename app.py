@@ -18,7 +18,7 @@ st.write("Este aplicación extrae la información de Yahoo Finance **en tiempo r
 
 st.write("Para esta comparación, tenemos a cada lado la fecha de actualización de la moneda, "
          "el valor actual de cada moneda en USD, el cambio de la moneda con respecto a su último valor en USD"
-         ", y un gráfico del precio de la moneda en el tiempo.")
+         ", y un gráfico del precio de la moneda en el tiempo (tomado en GMT)")
 
 st.write("Esta aplicación fue desarrollada por Jorge Esteban Caballero R para la entrega 'Dashboard 2: Una herramienta propia con código' "
          "de la asignatura 'Visualización y storytelling' de MIAD" )
