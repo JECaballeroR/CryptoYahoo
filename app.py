@@ -32,6 +32,8 @@ class DatosTiempoReal():
         self.data = defaultdict(partial(deque, maxlen=20))  # {TICKER : DEQUE}, each deque keeps 20 vals
         try:
             self.df = pd.read_csv('coin_data.csv')
+            self.df['Tiempo'] = pd.to_datetime(self.df['Tiempo'])
+            st.write(self.df)
             with con.container():
                 eth, btc = st.columns(2)
                 eth_data = self.df[self.df['COIN'] == "ETH-USD"]
