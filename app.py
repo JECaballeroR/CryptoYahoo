@@ -137,7 +137,7 @@ class DatosTiempoReal():
             self.data[ticker].append([price, timestamp])
             df = pd.DataFrame(columns= ['COIN', 'Tiempo', 'Precio (USD)'], data=[[ticker, datetime.datetime.now(),price]])
             self.df = pd.concat([self.df, df])
-            self.df.to_csv('coin_data.csv')
+            self.df.to_csv('coin_data.csv', index=False)
 
 
 @st.cache(suppress_st_warning=True)
