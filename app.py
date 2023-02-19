@@ -31,8 +31,11 @@ class DatosTiempoReal():
         self.tickers = ["ETH-USD" ,"BTC-USD"]  # list of tickers to be read from socket
         self.data = defaultdict(partial(deque, maxlen=20))  # {TICKER : DEQUE}, each deque keeps 20 vals
         try:
-            self.df = pd.read_csv('coin_data.csv')
-            self.df['Tiempo'] = pd.to_datetime(self.df['Tiempo'])
+            if data not in st.session_state:
+                     self.df = pd.read_csv('coin_data.csv')
+                     self.df['Tiempo'] = pd.to_datetime(self.df['Tiempo'])
+                     st.session_state.data=self.df
+            
             with con.container():
                 eth, btc = st.columns(2)
                 eth_data = self.df[self.df['COIN'] == "ETH-USD"]
@@ -138,6 +141,7 @@ class DatosTiempoReal():
             df = pd.DataFrame(columns= ['COIN', 'Tiempo', 'Precio (USD)'], data=[[ticker, datetime.datetime.now(),price]])
             self.df = pd.concat([self.df, df])
             self.df.tail(200).to_csv('coin_data.csv', index=False)
+            st.session_state.data=self.df.copy()
 
 
 @st.cache(suppress_st_warning=True)
