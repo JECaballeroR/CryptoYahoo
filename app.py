@@ -35,7 +35,6 @@ class DatosTiempoReal():
             if "data" not in st.session_state:
                 self.df = pd.read_csv('coin_data.csv')
                 self.df['Tiempo'] = pd.to_datetime(self.df['Tiempo'])
-                st.session_state.data = self.df
             else:
                 self.df = st.session_state.data
 
